@@ -4,6 +4,8 @@ This Python application provides a graphical user interface (GUI) for viewing an
 
 Using cutting edge technology we have developed the brand new `.fson` file format.. that's literally just json but with an f for fish :)
 
+fson: Fishing Stuff Object Notation
+
 ## Features
 
 - Load `.fson` files containing fishing data.
