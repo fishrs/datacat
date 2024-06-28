@@ -16,6 +16,16 @@ Using cutting edge technology we have developed the brand new `.fson` file forma
 - Python 3.x
 - tkinter library (usually included with Python installations)
 
+# Running
+
+To run this GUI, simply cd into the root directory and run 
+
+```
+python3 main.py
+```
+
+It's that easy, now get out there and start labeling fish data 🦾
+
 ## Usage
 
 1. **Load Data**: Click on "Load .fson File" to select and load a `.fson` file.
