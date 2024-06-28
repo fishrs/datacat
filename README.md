@@ -19,7 +19,7 @@ With our embedded fishing pole, the primary data being collected at a constant i
 }
 ```
 
-Where `pull` is the raw signal read from our strain sensor and label is currently whether a fish was on the line or not(null for unlabeled). On the raspberry Pi firmware we're using, this data will be continuously collected every few milliseconds. All of the data collected in the field needs to be labeled by hand, so a GUI tool to simplify the process seemed like the obvious choice.
+Where `pull` is the raw signal read from our strain sensor and `label` is currently whether a fish was on the line or not(null for unlabeled). On the raspberry Pi firmware we're using, this data will be continuously collected every few milliseconds. All of the data collected in the field needs to be labeled by hand, so a GUI tool to simplify the process seemed like the obvious choice.
 
 ## Features
 
