@@ -4,7 +4,22 @@ This Python application provides a graphical user interface (GUI) for viewing an
 
 Using cutting edge technology we have developed the brand new `.fson` file format.. that's literally just json but with an f for fish :)
 
-fson: Fishing Stuff Object Notation
+## fson: Fishing Stuff Object Notation
+
+With our embedded fishing pole, the primary data being collected at a constant interval is in the following format(also found [here](https://github.com/fishrs/datafmt)):
+
+```json
+{
+  "coords": {
+    "lon": 0.0,
+    "lat": 0.0
+  },
+  "pull": 0.0,
+  "label": null
+}
+```
+
+Where `pull` is the raw signal read from our strain sensor and label is currently whether a fish was on the line or not(null for unlabeled). On the raspberry Pi firmware we're using, this data will be continuously collected every few milliseconds. All of the data collected in the field needs to be labeled by hand, so a GUI tool to simplify the process seemed like the obvious choice.
 
 ## Features
 
