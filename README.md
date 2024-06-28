@@ -16,7 +16,7 @@ Using cutting edge technology we have developed the brand new `.fson` file forma
 - Python 3.x
 - tkinter library (usually included with Python installations)
 
-# Running
+## Running
 
 To run this GUI, simply cd into the root directory and run 
 
