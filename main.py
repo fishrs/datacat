@@ -34,11 +34,18 @@ class FishingDataGUI:
         self.save_button = tk.Button(self.frame, text="Save", command=self.save_file)
         self.save_button.grid(row=2, column=2, padx=5)
         
+        self.play_button = tk.Button(self.frame, text="▶️", command=self.start_playing)
+        self.play_button.grid(row=2, column=3, padx=5)
+        
+        self.pause_button = tk.Button(self.frame, text="⏸️", command=self.pause_playing)
+        self.pause_button.grid(row=2, column=4, padx=5)
+        
         self.average_label = tk.Label(self.frame, text="Average Pull: N/A", font=("Helvetica", 16))
         self.average_label.grid(row=1, column=3, padx=20)
         
         self.data = []
         self.file_path = None
+        self.playing = False
     
     def load_file(self):
         self.file_path = filedialog.askopenfilename(filetypes=[("FSON files", "*.fson")])
@@ -58,15 +65,11 @@ class FishingDataGUI:
             lat = coords.get("lat", "N/A")
             pull = entry.get("pull", "N/A")
             label = entry.get("label", "N/A")
-            emoji = "🐟" if label is True else "❌" if label is False else "❗"
-            entry_str = f"{emoji} Entry {idx + 1}: Lon={lon}, Lat={lat}, Pull={pull}, Label={label} {emoji}"
+            emoji = "🐟" if label is True else "❌" if label is False else ""
+            entry_str = f"{emoji} Entry {idx + 1}: Lon={lon}, Lat={lat}, Pull={pull}, Label={label}"
             self.listbox.insert(tk.END, entry_str)
-            if label is True:
-                self.listbox.itemconfig(tk.END, {'bg': '#a4cee0'})
-            elif label is False:
-                self.listbox.itemconfig(tk.END, {'bg': '#bdbdbd'})
-            else:
-                self.listbox.itemconfig(tk.END, {'bg': '#bf564e'})
+            if label is None:
+                self.listbox.itemconfig(tk.END, {'bg': 'red'})
         
         if scroll_position:
             self.listbox.yview_moveto(scroll_position)
@@ -107,6 +110,22 @@ class FishingDataGUI:
             self.average_label.config(text=f"Average Pull: {average_pull:.2f}")
         else:
             self.average_label.config(text="Average Pull: N/A")
+
+    def start_playing(self):
+        self.playing = True
+        selected_indices = self.listbox.curselection()
+        start_idx = selected_indices[0] if selected_indices else 0
+        self.auto_select_entries(start_idx)
+    
+    def pause_playing(self):
+        self.playing = False
+    
+    def auto_select_entries(self, current_idx):
+        if self.playing and current_idx < len(self.data):
+            self.listbox.selection_set(current_idx)
+            self.listbox.see(current_idx)
+            self.update_average_pull()
+            self.root.after(150, self.auto_select_entries, current_idx + 1)
 
 if __name__ == "__main__":
     root = tk.Tk()
