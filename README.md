@@ -4,7 +4,7 @@ This Python application provides a graphical user interface (GUI) for viewing an
 
 Using cutting edge technology we have developed the brand new `.fson` file format.. that's literally just json but with an f for fish :)
 
-## fson: Fishing Stuff Object Notation
+## fson: Fishing Stuff Object Notation!
 
 With our embedded fishing pole, the primary data being collected at a constant interval is in the following format(also found [here](https://github.com/fishrs/datafmt)):
 
